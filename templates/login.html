@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Вхід</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="{{ url_for('static', filename='favicon.svg') }}"
+    />
+  </head>
+  <body style="padding-top: 2em">
+    <div class="container">
+      <h2>Вхід в кабінет</h2>
+      <form method="POST">
+        Логін: <input type="text" name="username" required /><br />
+        Пароль: <input type="password" name="password" required /><br />
+        <input type="submit" value="Увійти" style="background-color: #5271ff" />
+      </form>
+      <p><a href="/register">Немає акаунту? Зареєструйся</a></p>
+      <p><a href="/">← Назад</a></p>
+    </div>
+  </body>
+</html>

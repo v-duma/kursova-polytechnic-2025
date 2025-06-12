@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Особистий кабінет</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="{{ url_for('static', filename='favicon.svg') }}"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='../static/style.css') }}"
+    />
+  </head>
+  <body style="padding-top: 2em">
+    <div class="container">
+      <h2>Вітаємо, {{ username }}!</h2>
+
+      <p><a href="/logout">Вийти</a></p>
+
+      <h3>Календар</h3>
+      <div id="calendar"></div>
+
+      <!-- Статистика -->
+      <section
+        id="statistics"
+        class="authorized-section"
+        style="margin-top: 2em"
+      >
+        <div>
+          <h3>Статистика</h3>
+
+          <!-- Вибір періоду -->
+          <select
+            id="period-select"
+            class="form-control"
+            style="margin-bottom: 1em"
+          >
+            <option value="" disabled selected>Вибери період</option>
+            <option value="week">Тиждень</option>
+            <option value="month">Місяць</option>
+            <option value="year">Рік</option>
+            <option value="custom">Власний період</option>
+          </select>
+
+          <!-- Власний період -->
+          <div id="custom-period" style="display: none; margin-bottom: 1em">
+            <label for="start-date">Дата початку:</label>
+            <input type="date" id="start-date" class="form-control" />
+            <label for="end-date">Дата завершення:</label>
+            <input type="date" id="end-date" class="form-control" />
+            <button
+              id="get-statistics"
+              type="button"
+              class="button"
+              style="margin-top: 1em"
+            >
+              Дізнатися
+            </button>
+          </div>
+
+          <!-- Виведення статистики -->
+          <div id="stats-results" style="margin-top: 1em">
+            <p id="total-hours" style="display: none">
+              Загальна кількість годин: 0
+            </p>
+            <p id="total-salary" style="display: none">
+              Загальна зарплата: 0 грн
+            </p>
+            <p id="max-hours" style="display: none">
+              Максимальна кількість годин у день: 0 год
+            </p>
+            <p id="min-hours" style="display: none">
+              Мінімальна кількість годин у день: 0 год
+            </p>
+            <p id="max-salary" style="display: none">
+              Максимальна зарплата за день: 0 грн
+            </p>
+            <p id="min-salary" style="display: none">
+              Мінімальна зарплата за день: 0 грн
+            </p>
+
+            <button
+              id="view-daily-statistics"
+              class="button"
+              style="display: none; margin-top: 1em"
+            >
+              Переглянути деталі по днях
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Модальне вікно для детального перегляду -->
+      <div id="details-modal" class="modal" style="display: none">
+        <div
+          class="modal-content"
+          style="
+            background: white;
+            padding: 2em;
+            border-radius: 10px;
+            position: relative;
+            max-width: 500px;
+            margin: auto;
+            top: 10vh;
+          "
+        >
+          <span
+            class="close-modal"
+            style="
+              position: absolute;
+              top: 10px;
+              right: 15px;
+              font-size: 20px;
+              cursor: pointer;
+            "
+            >&times;</span
+          >
+          <h3 id="selected-date-title">Деталі по днях</h3>
+          <div id="daily-details-content" style="margin-top: 1em">
+            <!-- Дані по кожному дню -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Модальне вікно -->
+      <div id="modal" class="modal hidden">
+        <div class="modal-content" id="modal-content">
+          <!-- динамічний контент -->
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <script>
+      const USER_ID = "{{ session['user_id'] }}";
+    </script>
+
+    <script src="{{ url_for('static', filename='js/calendar.js') }}"></script>
+  </body>
+</html>

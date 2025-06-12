@@ -1,0 +1,86 @@
+#calendar {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  width: 340px;
+  max-width: 95%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal.hidden {
+  display: none;
+}
+
+button.blue {
+  background: #4a72f8;
+  color: white;
+}
+
+button.red {
+  background: #e74c3c;
+  color: white;
+}
+
+.close-btn {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+button {
+  font-family: "Montserrat", serif !important;
+}
+
+.fc-h-event .fc-event-title-container {
+  background-color: #5271ff;
+  margin-top: 5px !important;
+  font-size: 10px !important;
+  text-align: center;
+  color: #fafafa;
+}
+
+.fc-h-event {
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+}
+
+#edit-button,
+#delete-button,
+.save-button {
+  font-family: "Montserrat", serif;
+  padding: 8px 12px;
+  background-color: #5271ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 90%;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+#delete-button {
+  background-color: #ec4040;
+}
+
+.modal-content p {
+  margin: 0;
+}
